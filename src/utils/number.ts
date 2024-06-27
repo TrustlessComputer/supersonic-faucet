@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
 
 export const formatAmountFromChain = (rawAmount: any, decimals = 18) => {
   if (rawAmount) {
@@ -56,13 +55,6 @@ export const removeTrailingZeroes = (amountString: string) => {
   }
 
   return formattedString;
-};
-
-export const formatAmountToClient = (amount: any, _decimals = 18) => {
-  if (amount) {
-    return ethers.utils.formatEther(amount);
-  }
-  return '0';
 };
 
 export const formatDecimal = (params: {
