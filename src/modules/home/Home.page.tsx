@@ -22,7 +22,7 @@ const HomePage = () => {
 
   const isDisableBtn = useMemo(() => {
     return !!errorMessage || !recieverAddress || recieverAddress.length < 1;
-  }, [errorMessage]);
+  }, [errorMessage, recieverAddress]);
 
   const handleChange = (event: any) => {
     const text = event.target.value;
@@ -32,7 +32,7 @@ const HomePage = () => {
       setErrorMessage('Address is required!');
     } else {
       if (!validateEVMAddress(text)) {
-        setErrorMessage('Invalid Adderss');
+        setErrorMessage('Invalid Address');
       } else {
         setErrorMessage(undefined);
       }
@@ -52,7 +52,8 @@ const HomePage = () => {
       const { message } = getErrorMessage(error);
       toast.error(message);
     } finally {
-      setLoading(false);
+      // setLoading(false);
+      setErrorMessage(undefined);
     }
   };
 
