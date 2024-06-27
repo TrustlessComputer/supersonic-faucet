@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react';
 import { getErrorMessage } from '@/utils/error';
 import toast from 'react-hot-toast';
 import API from '@/services/Faucet';
+import ReCaptcha from './FaucetComp';
 
 export const validateEVMAddress = (_address: string): boolean => {
   return ethers.isAddress(_address);
@@ -19,10 +20,17 @@ const HomePage = () => {
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
     undefined,
   );
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const isDisableBtn = useMemo(() => {
-    return !!errorMessage || !recieverAddress || recieverAddress.length < 1;
-  }, [errorMessage, recieverAddress]);
+    return (
+      !!errorMessage ||
+      !recieverAddress ||
+      recieverAddress.length < 1 ||
+      !captchaToken ||
+      captchaToken.length < 1
+    );
+  }, [errorMessage, recieverAddress, captchaToken]);
 
   const handleChange = (event: any) => {
     const text = event.target.value;
@@ -55,6 +63,10 @@ const HomePage = () => {
       // setLoading(false);
       setErrorMessage(undefined);
     }
+  };
+
+  const handleCaptchaVerify = (token: string) => {
+    setCaptchaToken(token);
   };
 
   return (
@@ -117,7 +129,7 @@ const HomePage = () => {
                 {`${errorMessage}`}
               </Text>
             )}
-
+            <ReCaptcha onVerify={handleCaptchaVerify} />
             <Button
               w={'100%'}
               h="50px"

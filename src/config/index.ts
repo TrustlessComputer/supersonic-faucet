@@ -12,6 +12,12 @@ export const CDN_URL: string = process.env.NEXT_PUBLIC_CDN_URL!;
 export const API_URL: string = process.env.NEXT_PUBLIC_API_URL!;
 export const API_KEY: string = process.env.NEXT_PUBLIC_API_KEY!;
 
+//Captcha
+export const RECAPTCHA_SITE_KEY: string =
+  process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!;
+export const RECAPTCHA_SITE_KEY_BY_PASS: string =
+  process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY_BY_PASS!;
+
 // PUBLIC URL
 export const BITCOIN_EXPLORER_URL: string =
   process.env.NEXT_PUBLIC_BITCOIN_EXPLORER_URL!;
