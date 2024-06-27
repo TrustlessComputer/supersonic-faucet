@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 
-export const APP_NAME = 'Supersonic';
-export const APP_DEFAULT_TITLE = 'Supersonic';
-export const APP_TITLE_TEMPLATE = 'Supersonic';
-export const APP_DESCRIPTION = 'Supersonic Description.';
+export const APP_NAME = 'BVM';
+export const APP_DEFAULT_TITLE = 'BVM';
+export const APP_TITLE_TEMPLATE = 'BVM';
+export const APP_DESCRIPTION = 'BVM Description.';
 
 const metadataConfig: Metadata = {
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_DOMAIN_URL}`),
