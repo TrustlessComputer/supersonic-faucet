@@ -21,17 +21,21 @@ const HomePage = () => {
   );
 
   const isDisableBtn = useMemo(() => {
-    return !!errorMessage;
+    return !!errorMessage || !recieverAddress || recieverAddress.length < 1;
   }, [errorMessage]);
 
   const handleChange = (event: any) => {
     const text = event.target.value;
     setRecieverAddress(text);
 
-    if (!validateEVMAddress(text)) {
-      setErrorMessage('Invalid Adderss');
+    if (!text || text.length < 1) {
+      setErrorMessage('Address is required!');
     } else {
-      setErrorMessage(undefined);
+      if (!validateEVMAddress(text)) {
+        setErrorMessage('Invalid Adderss');
+      } else {
+        setErrorMessage(undefined);
+      }
     }
   };
 
@@ -48,7 +52,7 @@ const HomePage = () => {
       const { message } = getErrorMessage(error);
       toast.error(message);
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -91,15 +95,28 @@ const HomePage = () => {
               fontSize={'20px'}
               isInvalid={false}
               value={recieverAddress}
-              placeholder="Enter you address"
+              placeholder="Enter your address"
               _placeholder={{
                 color: '#8c8c8c',
+                fontSize: '15px',
               }}
               borderColor={'#0E0E0E'}
               bgColor={'#0E0E0E'}
               color={'#fff'}
               onChange={handleChange}
             />
+
+            {errorMessage && (
+              <Text
+                fontSize={'15px'}
+                fontWeight={500}
+                color={'#fc0000'}
+                alignSelf={'flex-start'}
+              >
+                {`${errorMessage}`}
+              </Text>
+            )}
+
             <Button
               w={'100%'}
               h="50px"
@@ -120,18 +137,6 @@ const HomePage = () => {
               Submit
             </Button>
           </Flex>
-
-          {errorMessage && (
-            <Text
-              mt={'20px'}
-              fontSize={'20px'}
-              fontWeight={500}
-              color={'#fc0000'}
-              alignSelf={'flex-start'}
-            >
-              {`${errorMessage}`}
-            </Text>
-          )}
         </Flex>
       </Flex>
     </Flex>
