@@ -85,6 +85,9 @@ const HomePage = () => {
   const handleCaptchaVerify = (token: string) => {
     setCaptchaToken(token);
   };
+  const handleOnExpired = () => {
+    setCaptchaToken(null);
+  };
 
   return (
     <Flex
@@ -160,7 +163,10 @@ const HomePage = () => {
                 {`${errorMessage}`}
               </Text>
             )}
-            <ReCaptcha onVerify={handleCaptchaVerify} />
+            <ReCaptcha
+              onVerify={handleCaptchaVerify}
+              onExpired={handleOnExpired}
+            />
             <Button
               w={'100%'}
               h={['40px', '50px']}
