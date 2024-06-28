@@ -21,6 +21,9 @@ const HomePage = () => {
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
     undefined,
   );
+
+  const [amount, setAmount] = useState<number | null>(null);
+
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const [txHash, setTxHash] = useState<string | undefined>(undefined);
@@ -57,13 +60,18 @@ const HomePage = () => {
         recipient_address: recieverAddress,
       });
 
-      console.log('RESULT --- ', result);
       if (result) {
         if (result.error) {
           toast.error(result.tx_hash);
+          setErrorMessage(result.tx_hash);
+          setAmount(null);
         } else {
-          toast.success('Faucet success!');
+          toast.success(
+            `Faucet success! You will receive ${result.amount} BVM`,
+          );
+          setAmount(result.amount);
           setTxHash(result.tx_hash);
+          setErrorMessage(undefined);
         }
       }
     } catch (error: any) {
@@ -71,7 +79,6 @@ const HomePage = () => {
       toast.error(message);
     } finally {
       setLoading(false);
-      setErrorMessage(undefined);
     }
   };
 
@@ -225,6 +232,13 @@ const HomePage = () => {
                   }}
                 />
               </Flex>
+
+              <Text
+                fontSize={['14px', '14px', '15px', '16px']}
+                fontWeight={500}
+              >
+                {`Amount: ${amount} BVM`}
+              </Text>
             </Flex>
           )}
         </Flex>
