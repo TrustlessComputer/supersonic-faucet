@@ -9,16 +9,16 @@ export const HEADER_VIEW_ID = 'HEADER_VIEW_ID';
 const Header = (props: Props) => {
   return (
     <Box id={HEADER_VIEW_ID} className={s.container}>
-      <Flex
-        align={'center'}
-        justify={'flex-start'}
-        p={'20px'}
-        _hover={{
-          cursor: 'pointer',
-          opacity: 0.8,
-        }}
-      >
-        <Image src={`/icons/bvm_logo.png`} height={'45px'} width={'auto'} />
+      <Flex align={'center'} justify={'flex-start'} p={'20px'}>
+        <Image
+          _hover={{
+            cursor: 'pointer',
+            opacity: 0.8,
+          }}
+          src={`/icons/bvm_logo.png`}
+          height={'45px'}
+          width={'auto'}
+        />
       </Flex>
     </Box>
   );

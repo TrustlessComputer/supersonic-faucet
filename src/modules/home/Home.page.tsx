@@ -99,18 +99,18 @@ const HomePage = () => {
       <Flex maxW={'1400px'}>
         <Flex
           flexDir={'column'}
-          align={'center'}
           maxW={'700px'}
-          w={'600px'}
+          justify={'center'}
           mt={'20px'}
-          p={'3px'}
+          w={['auto', '600px']}
+          p={'5px'}
         >
           <Text fontSize={['24px', '30px', '35px', '40px']} fontWeight={500}>
             <Text
               as={'span'}
               fontSize={['24px', '30px', '35px', '40px']}
               fontWeight={500}
-              color={'#2024fd'}
+              color={'#4043fd'}
             >
               {`$BVM `}
             </Text>
@@ -126,7 +126,7 @@ const HomePage = () => {
               as={'span'}
               fontSize={['14px', '15px', '16px', '18px']}
               fontWeight={400}
-              color={'#2024fd'}
+              color={'#4043fd'}
             >
               {` $BVM `}
             </Text>
@@ -136,13 +136,12 @@ const HomePage = () => {
 
           <Flex
             mt="40px"
-            width={'100%'}
             gap={'20px'}
             flexDir={'column'}
             bgColor={'#24272F'}
             borderWidth={'1px'}
             borderRadius="16px"
-            p="32px"
+            p={['10px', '20px', '32px']}
             align={'flex-start'}
           >
             <Text
@@ -241,7 +240,7 @@ const HomePage = () => {
                     opacity: 0.8,
                     cursor: 'pointer',
                     textDecorationLine: 'underline',
-                    color: '#0d00ff',
+                    color: '#4043fd',
                   }}
                 >
                   {`${txHash}`}
