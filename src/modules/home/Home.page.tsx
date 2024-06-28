@@ -59,8 +59,12 @@ const HomePage = () => {
 
       console.log('RESULT --- ', result);
       if (result) {
-        toast.success('Faucet success!');
-        setTxHash(result.tx_hash);
+        if (result.error) {
+          toast.error(result.tx_hash);
+        } else {
+          toast.success('Faucet success!');
+          setTxHash(result.tx_hash);
+        }
       }
     } catch (error: any) {
       const { message } = getErrorMessage(error);
