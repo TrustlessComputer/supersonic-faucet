@@ -64,14 +64,24 @@ const HomePage = () => {
       bgColor={'black'}
       align={'center'}
       textAlign={'center'}
-      p={'30px'}
+      p={['10px', '20px', '30px']}
     >
       <Flex maxW={'1400px'}>
-        <Flex flexDir={'column'} align={'center'} w={'700px'} mt={'20px'}>
-          <Text fontSize={'40px'} fontWeight={500}>
+        <Flex
+          flexDir={'column'}
+          align={'center'}
+          maxW={'700px'}
+          mt={'20px'}
+          p={'3px'}
+        >
+          <Text fontSize={['24px', '30px', '35px', '40px']} fontWeight={500}>
             {`Supersonic Testnet Faucet`}
           </Text>
-          <Text fontSize={'18px'} fontWeight={400} color={'#828282'}>
+          <Text
+            fontSize={['14px', '15px', '16px', '18px']}
+            fontWeight={400}
+            color={'#828282'}
+          >
             {`To receive free BVM token for our system, simply enter your wallet address.`}
           </Text>
 
@@ -86,20 +96,24 @@ const HomePage = () => {
             p="32px"
             align={'flex-start'}
           >
-            <Text fontSize={'16px'} fontWeight={400} color={'#B6B6B6'}>
+            <Text
+              fontSize={['14px', '15px', '16px']}
+              fontWeight={400}
+              color={'#B6B6B6'}
+            >
               {`Paste your address under`}
             </Text>
 
             <Input
               width="100%"
-              h="60px"
-              fontSize={'20px'}
+              h={['45px', '60px']}
+              fontSize={['15px', '18px', '20px']}
               isInvalid={false}
               value={recieverAddress}
               placeholder="Enter your address"
               _placeholder={{
                 color: '#8c8c8c',
-                fontSize: '15px',
+                fontSize: ['13px', '14px', '15px'],
               }}
               borderColor={'#0E0E0E'}
               bgColor={'#0E0E0E'}
@@ -120,7 +134,8 @@ const HomePage = () => {
 
             <Button
               w={'100%'}
-              h="50px"
+              h={['40px', '50px']}
+              fontSize={['15px', '16px', '18px']}
               color={'#fff'}
               bgColor={'#1D9BF0'}
               isLoading={isLoading}
