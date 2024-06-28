@@ -23,21 +23,16 @@ const chakraThemes = extendTheme({
   styles: {
     global: {
       body: {
-        minHeight: '100dvh',
-        fontFamily: `Helvetica Neue`,
+        fontFamily: `SF Pro Display`,
         color: '#1d1f31',
-        lineHeight: 'base',
       },
     },
   },
   textStyles: {
     primary: {
-      fontFamily: 'BandeinsSans',
+      fontFamily: 'DM Sans',
     },
     secondary: {
-      fontFamily: 'Urbanist',
-    },
-    third: {
       fontFamily: 'Space Mono',
     },
   },

@@ -1,6 +1,7 @@
 'use client';
 
-import { Flex, Text, Button, Input } from '@chakra-ui/react';
+import { Flex, Text, Button, Input, Link } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 import s from './styles.module.scss';
 import { ethers } from 'ethers';
@@ -19,6 +20,8 @@ const HomePage = () => {
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
     undefined,
   );
+
+  const [txHash, setTxHash] = useState<string | undefined>(undefined);
 
   const isDisableBtn = useMemo(() => {
     return !!errorMessage || !recieverAddress || recieverAddress.length < 1;
@@ -45,14 +48,17 @@ const HomePage = () => {
       const result = await API.getFaucet({
         recipient_address: recieverAddress,
       });
+
+      console.log('RESULT --- ', result);
       if (result) {
         toast.success('Faucet success!');
+        setTxHash(result.tx_hash);
       }
     } catch (error: any) {
       const { message } = getErrorMessage(error);
       toast.error(message);
     } finally {
-      // setLoading(false);
+      setLoading(false);
       setErrorMessage(undefined);
     }
   };
@@ -153,6 +159,58 @@ const HomePage = () => {
               Submit
             </Button>
           </Flex>
+
+          {txHash && (
+            <Flex
+              mt={'20px'}
+              w="100%"
+              justify={'flex-start'}
+              flexDir={'column'}
+              textAlign={'left'}
+            >
+              <Text
+                fontSize={['15px', '16px', '18px', '20px']}
+                fontWeight={600}
+              >
+                {`Transaction:`}
+              </Text>
+
+              <Flex
+                flexDir={'row'}
+                align={'center'}
+                gap={'5px'}
+                onClick={() => {
+                  window.open(
+                    `https://explorer.testnet.supersonic2.bvm.network/tx/${txHash}`,
+                    '_blank',
+                  );
+                }}
+              >
+                <Link
+                  fontSize={['14px', '14px', '15px', '16px']}
+                  fontWeight={500}
+                  target="_blank"
+                  color={'#fff'}
+                  _hover={{
+                    opacity: 0.8,
+                    cursor: 'pointer',
+                    textDecorationLine: 'underline',
+                    color: '#0d00ff',
+                  }}
+                >
+                  {`${txHash}`}
+                </Link>
+                <ExternalLinkIcon
+                  h={'20px'}
+                  w={'auto'}
+                  _hover={{
+                    opacity: 0.8,
+                    cursor: 'pointer',
+                  }}
+                />
+              </Flex>
+            </Flex>
+          )}
         </Flex>
       </Flex>
     </Flex>

@@ -1,42 +1,11 @@
 :root {
-  background: #fff;
-  color: #000;
-  font-variant: 'none';
-  --easeOutQuart: cubic-bezier(0.25, 1, 0.5, 1);
-
-  text-rendering: optimizeLegibility !important; //macOS
-  -webkit-font-smoothing: antialiased !important; //macOS
+  text-rendering: optimizeLegibility !important; // macOS
+  -webkit-font-smoothing: antialiased !important; // macOS
   -moz-osx-font-smoothing: grayscale !important; // Firefox
 
-  $--block-size: 125px;
-
-  --builder-padding-size: 56px;
   --font-hind: 'Hind Siliguri', sans-serif;
   --font-dmsans: 'DM Sans', sans-serif;
+  --font-SFProDisplay: 'SF Pro Display', sans-serif;
 
-  @include is-min-table {
-    --builder-padding-size: 80px;
-  }
-
-  @include is-pc {
-    --builder-padding-size: 120px;
-  }
-
-  // ::-webkit-scrollbar {
-  //   display: none;
-  // }
-}
-
-.slick-slider {
-  position: relative;
-  display: flex !important;
-}
-
-.maxWidth {
-  max-width: 1600px;
-}
-
-.grecaptcha-badge {
-  opacity: 0 !important;
-  bottom: -9999999px !important;
+  font-family: var(--font-SFProDisplay);
 }
