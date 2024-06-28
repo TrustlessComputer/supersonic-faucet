@@ -66,9 +66,7 @@ const HomePage = () => {
           setErrorMessage(result.tx_hash);
           setAmount(null);
         } else {
-          toast.success(
-            `Faucet success! You will receive ${result.amount} BVM`,
-          );
+          toast.success(`Submitted successfully.`);
           setAmount(result.amount);
           setTxHash(result.tx_hash);
           setErrorMessage(undefined);
@@ -103,18 +101,37 @@ const HomePage = () => {
           flexDir={'column'}
           align={'center'}
           maxW={'700px'}
+          w={'600px'}
           mt={'20px'}
           p={'3px'}
         >
           <Text fontSize={['24px', '30px', '35px', '40px']} fontWeight={500}>
-            {`Supersonic Testnet Faucet`}
+            <Text
+              as={'span'}
+              fontSize={['24px', '30px', '35px', '40px']}
+              fontWeight={500}
+              color={'#2024fd'}
+            >
+              {`$BVM `}
+            </Text>
+            {`Testnet Faucet`}
           </Text>
           <Text
             fontSize={['14px', '15px', '16px', '18px']}
             fontWeight={400}
             color={'#828282'}
           >
-            {`To receive free BVM token for our system, simply enter your wallet address.`}
+            {`To get`}
+            <Text
+              as={'span'}
+              fontSize={['14px', '15px', '16px', '18px']}
+              fontWeight={400}
+              color={'#2024fd'}
+            >
+              {` $BVM `}
+            </Text>
+
+            {`testnet, simply enter your wallet address.`}
           </Text>
 
           <Flex
@@ -133,7 +150,7 @@ const HomePage = () => {
               fontWeight={400}
               color={'#B6B6B6'}
             >
-              {`Paste your address under`}
+              {`Paste your address here`}
             </Text>
 
             <Input
