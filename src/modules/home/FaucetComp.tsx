@@ -1,5 +1,5 @@
 // src/components/ReCaptcha.tsx
-import { RECAPTCHA_SITE_KEY_BY_PASS } from '@/config';
+import { RECAPTCHA_SITE_KEY_BY_PASS, RECAPTCHA_SITE_KEY } from '@/config';
 import React, { useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -19,7 +19,7 @@ const ReCaptcha: React.FC<ReCaptchaProps> = ({ onVerify }) => {
   return (
     <ReCAPTCHA
       ref={recaptchaRef}
-      sitekey={RECAPTCHA_SITE_KEY_BY_PASS}
+      sitekey={RECAPTCHA_SITE_KEY}
       onChange={handleChange}
     />
   );
