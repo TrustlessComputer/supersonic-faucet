@@ -9,7 +9,7 @@ import redis
 
 app = FastAPI()
 # Configure Redis connection
-r = redis.Redis(host='localhost', port=6379, db=0)
+r = redis.Redis(host='redis', port=6379, db=0)
 
 # Configuration
 MAINNET_RPC_URL = "https://rpc.supersonic.bvm.network"
@@ -17,7 +17,7 @@ MAINNET_CHAIN_ID = 222150
 TESTNET_RPC_URL = "https://rpc.testnet.supersonic2.bvm.network"
 TESTNET_CHAIN_ID = 22219
 PRIVATE_KEY = "df57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e"
-AMOUNT_ETH = 5
+AMOUNT_ETH = 1
 API_KEY = "8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199"  # Replace with your actual API key
 LOCK_TIME=4 #hours
 
@@ -112,5 +112,6 @@ def send_eth(request: FaucetRequest):
        
 
     except Exception as e:
+        print(str(e))
         raise HTTPException(status_code=500, detail=str(e))
 # To run the application, use the command: uvicorn faucet_service:app --reload
