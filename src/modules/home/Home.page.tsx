@@ -10,6 +10,7 @@ import { getErrorMessage } from '@/utils/error';
 import toast from 'react-hot-toast';
 import API from '@/services/Faucet';
 import ReCaptcha from './FaucetComp';
+import { EXPLORER_URL } from '@/config';
 
 export const validateEVMAddress = (_address: string): boolean => {
   return ethers.isAddress(_address);
@@ -231,10 +232,7 @@ const HomePage = () => {
                 align={'center'}
                 gap={'5px'}
                 onClick={() => {
-                  window.open(
-                    `https://explorer.testnet.supersonic2.bvm.network/tx/${txHash}`,
-                    '_blank',
-                  );
+                  window.open(`${EXPLORER_URL}/tx/${txHash}`, '_blank');
                 }}
               >
                 <Link

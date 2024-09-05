@@ -27,4 +27,7 @@ export const isDevelop = APP_ENV === 'develop';
 export const isStaging = APP_ENV === 'staging';
 export const isProduction = APP_ENV === 'production';
 
+// Explorer
+export const EXPLORER_URL: string = process.env.NEXT_PUBLIC_EXPLORER_URL!;
+
 export { MetadataConfig, ViewportConfig };
