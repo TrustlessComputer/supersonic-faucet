@@ -28,14 +28,18 @@ const HomePage = () => {
 
   const [txHash, setTxHash] = useState<string | undefined>(undefined);
 
+  // const isDisableBtn = useMemo(() => {
+  //   return (
+  //     !!errorMessage ||
+  //     !recieverAddress ||
+  //     recieverAddress.length < 1 ||
+  //     !captchaToken ||
+  //     captchaToken.length < 1
+  //   );
+  // }, [errorMessage, recieverAddress, captchaToken]);
+
   const isDisableBtn = useMemo(() => {
-    return (
-      !!errorMessage ||
-      !recieverAddress ||
-      recieverAddress.length < 1 ||
-      !captchaToken ||
-      captchaToken.length < 1
-    );
+    return !!errorMessage || !recieverAddress || recieverAddress.length < 1;
   }, [errorMessage, recieverAddress, captchaToken]);
 
   const handleChange = (event: any) => {
@@ -179,10 +183,12 @@ const HomePage = () => {
                 {`${errorMessage}`}
               </Text>
             )}
-            <ReCaptcha
-              onVerify={handleCaptchaVerify}
-              onExpired={handleOnExpired}
-            />
+            {/* {
+              <ReCaptcha
+                onVerify={handleCaptchaVerify}
+                onExpired={handleOnExpired}
+              />
+            } */}
             <Button
               w={'100%'}
               h={['40px', '50px']}
